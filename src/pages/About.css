@@ -1,0 +1,39 @@
+.hidden-initially {
+  opacity: 0;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+.scroll-animate-left, .scroll-animate-right {
+  opacity: 0;
+  transform: translateX(100px); /* Adjust for right or left scroll effects */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
