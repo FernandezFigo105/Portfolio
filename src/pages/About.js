@@ -7,8 +7,8 @@ const About = () => {
   const textRef = useRef(null);
   const [imageStyle, setImageStyle] = useState({});
   const [textStyle, setTextStyle] = useState({});
-  const maxImageTranslate = 250; 
-  const maxTextTranslate = -250;
+  const maxImageTranslate = 380; 
+  const maxTextTranslate = -230;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,13 +66,13 @@ const About = () => {
 
       <div
         ref={textRef}
-        className="lg:scroll-animate-left justify-center lg:justify-end ml-auto p-4 lg:p-0 px-10 lg:mr-[50px] lg:max-w-[600px]"
+        className="lg:scroll-animate-left justify-center lg:justify-end ml-auto  p-4 lg:p-0 px-10  lg:max-w-[600px]"
         style={textStyle}
       >
         <h2 className="text-base text-[14.591px] lg:text-[21.97px] font-Figtree text-left">
-          <span className="text-[#FA7772]">Hey there!</span> I'm Christopher
-          Devar.<br /> A final year design student at MITSD Pune
-          <br />
+          <span className="text-[#FA7772] ">Hey there!</span> I'm Christopher
+          Devar.<br /> A final year UX/UI design student at MITSD Pune
+          <br/><br/>
           Design has become my way of balancing my <br />
           creativity with my logical-analytical-overthinking side. <br />I
           enjoy working on projects that are result-driven. <br />I am hungry

@@ -2,16 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Lexend';
-  src: url('../src/fonts/Lexend-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Figtree:ital,wght@0,300..900;1,300..900&family=Lexend:wght@100..900&display=swap');
 
-@font-face {
-  font-family: 'Figtree';
-  src: url('../src/fonts/Figtree-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');

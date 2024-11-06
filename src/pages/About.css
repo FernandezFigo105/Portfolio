@@ -25,11 +25,11 @@
 }
 
 .animate-slide-in-left {
-  animation: slideInLeft 1s ease-out forwards;
+  animation: slideInLeft 0.1s ease-out forwards;
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 1s ease-out forwards;
+  animation: slideInRight 0.1s ease-out forwards;
 }
 
 .scroll-animate-left, .scroll-animate-right {

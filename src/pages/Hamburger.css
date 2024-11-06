@@ -1,0 +1,56 @@
+/* General reset for the checkbox */
+.hidden {
+    display: none;
+}
+
+/* Container for the hamburger icon */
+.hamburger-container {
+    position: relative;
+    width: 40px; /* Width of the hamburger */
+    height: 30px; /* Height of the hamburger */
+}
+
+/* Label for the hamburger toggle */
+.hamburger-label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+/* Styling for the bars */
+.bar {
+    width: 100%;
+    height: 4px; /* Bar height */
+    background-color: black; /* Color of the bars */
+    border-radius: 2px; /* Rounded corners */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
+}
+
+/* Initial positions of the bars */
+.bar--top {
+    transform-origin: center; /* Set origin for rotation */
+}
+
+.bar--middle {
+    opacity: 1; /* Fully visible */
+}
+
+.bar--bottom {
+    transform-origin: center; /* Set origin for rotation */
+}
+
+/* Styles when the checkbox is checked (hamburger clicked) */
+#hamburger-toggle:checked + .hamburger-label .bar--top {
+    transform: rotate(45deg) translate(0px, 8px); /* Rotate and move down to center */
+}
+
+#hamburger-toggle:checked + .hamburger-label .bar--middle {
+    opacity: 0; /* Hide middle bar */
+}
+
+#hamburger-toggle:checked + .hamburger-label .bar--bottom {
+    transform: rotate(-45deg) translate(0px, -8px); /* Rotate and move up to center */
+}
