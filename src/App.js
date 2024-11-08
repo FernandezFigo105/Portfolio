@@ -6,6 +6,8 @@ import ProjectKores from './pages/ProjectKores';
 import ProjectYourHour from './pages/ProjectYourHour';
 import ProjectFridge from './pages/ProjectFridge';
 import ProjectPuptone from './pages/ProjectPuptone';
+import About from './pages/About.js';
+import Resume from './pages/Resume.js';
 import './App.css';
 
 function App() {
@@ -15,9 +17,9 @@ function App() {
         <Routes>
           {/* Home Page Route */}
           <Route path="/" element={<Home />} />
-
-          {/* Projects Page Route */}
-          <Route path="/projects" element={<Projects />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/resume" element={<Resume />} />
 
           {/* Individual Project Routes */}
           <Route path="/projects/kores" element={<ProjectKores />} />

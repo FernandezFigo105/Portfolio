@@ -56,7 +56,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className='min-h-screen w-full bg-[#F7F7F7] flex flex-col lg:flex-row items-center z-50'>
+    <div id="about-me" className='min-h-screen w-full bg-[#F7F7F7] flex flex-col lg:flex-row items-center z-30'>
       <div
         ref={imageRef}
         className='w-[150px] mt-[70px] lg:w-[300px] h-auto flex justify-center my-[20px] lg:ml-[50px] lg:mr-[120px] lg:scroll-animate-right'

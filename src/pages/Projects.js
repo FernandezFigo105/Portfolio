@@ -36,7 +36,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-[#F7F7F7] flex-col space-y-8 lg:space-y-10 lg:space-x-10 lg:pb-10 pt-[70px]">
+    <div id="projects" className=" flex items-center justify-center w-full min-h-screen bg-[#F7F7F7] flex-col space-y-8 lg:space-y-10 lg:space-x-10 lg:pb-10 pt-[70px]">
       <h1 className="text-2xl md:text-3xl font-semibold font-Figtree">My Projects</h1>
 
       {projectData.map((project, index) => (
@@ -58,7 +58,19 @@ const Projects = () => {
           {project.badge && (
             <div className="absolute top-4 left-4 sm:top-8 sm:left-8 lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2">
               <div className="w-16 h-16 sm:w-24 sm:h-24 lg:w-36 lg:p-[10px] lg:h-36 bg-[#3E3E3E] rounded-full text-white flex justify-center font-Lexend items-center text-xs sm:text-sm lg:text-base text-center">
-                {project.badge}
+              {project.badge && (
+  <div className="absolute top-4 left-4 sm:top-8 sm:left-8 lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2">
+    <div className="w-16 h-16 sm:w-24 sm:h-24 lg:w-36 lg:p-[10px] lg:h-36 bg-[#3E3E3E] rounded-full text-white flex justify-center font-Lexend items-center text-xs sm:text-sm lg:text-base text-center">
+      {/* Split badge text into two parts */}
+      {project.badge.split(' ').map((word, index) => (
+        <React.Fragment key={index}>
+          {word}
+          {index === 0 && <br />} {/* Add a line break after the first word */}
+        </React.Fragment>
+      ))}
+    </div>
+  </div>
+)}
               </div>
             </div>
           )}

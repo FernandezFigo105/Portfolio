@@ -7,6 +7,7 @@ import Triangle from '../assets/Triangle.png';
 import Glasses from '../assets/Glasses.svg';
 import Chisto from '../assets/chustopisto 3.png';
 import Hamburger from './Hamburger.js';
+import Footer from './footer.js';
 
 const Home = () => {
   const [translateOnce, setTranslateOnce] = useState(false);
@@ -17,11 +18,12 @@ const Home = () => {
   const glassesRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
 
-  const GLASSES_STOP_SCROLL = 40;
-  const FADE_START = 100;
-  const FADE_END = 300;
-  const IMG_FADE_START= 300;
-  const IMG_FADE_END=500; // Updated for faster fade
+  const TEXTFADE_START = 10
+  const TEXTFADE_END = 300
+  const FADE_START = 250;
+  const FADE_END = 500;
+  const IMG_FADE_START = 300;
+  const IMG_FADE_END = 500; // Updated for faster fade
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -68,8 +70,8 @@ const Home = () => {
   return (
     <div className='bg-[#231E1F] flex flex-col items-center min-h-screen'>
       <Hamburger />
-      <div 
-        className='flex flex-col justify-between items-center min-h-screen w-full'
+      <div
+        id="home" className='flex flex-col justify-between items-center min-h-screen w-full'
         style={{
           transform: `translateY(${scrollY < FADE_START ? 0 : scrollY * 0.3}px)`,
           transition: 'transform 0.3s ease',
@@ -79,7 +81,7 @@ const Home = () => {
         <div
           className='text-center font-Figtree mt-[220px] lg:mt-[150px] sticky top-0'
           style={{
-            opacity: scrollY >= FADE_START ? Math.max(1 - (scrollY - FADE_START) / (FADE_END - FADE_START), 0) : 1,
+            opacity: scrollY >= FADE_START ? Math.max(1 - (scrollY - TEXTFADE_START) / (TEXTFADE_END - TEXTFADE_START), 0) : 1,
             transition: 'opacity 0.2s ease', // Updated for faster fade
           }}
         >
@@ -94,7 +96,7 @@ const Home = () => {
         <div className="relative w-[300px] h-[300px] lg:w-[500px] lg:h-[300px] flex-shrink-0">
           <img
             src={Chisto}
-            className="absolute bottom-0 left-0 z-30 w-[90%] lg:w-[100%]"
+            className="absolute bottom-0 left-0 z-10 w-[90%] lg:w-[100%]"
             alt="Chisto"
             style={{
               transform: `translateY(${scrollY < IMG_FADE_START ? 0 : scrollY * 0.1}px)`,
@@ -105,26 +107,32 @@ const Home = () => {
 
           {chistoOpacity > 0 && (
             <>
-<img
+              <img
   src={Glasses}
   ref={glassesRef}
-  className={`absolute top-[120px] lg:top-[-10px] left-[70px] lg:bottom-[85px] w-[40%] lg:left-[135px] lg:w-[40%] z-40 transition-transform duration-300 ${
+  className={`absolute top-[120px] lg:top-[-20px] left-[70px] lg:bottom-[85px] w-[40%] lg:left-[135px] lg:w-[40%] z-20 transition-transform duration-300 ${
     translateOnce ? 'translate-y-5' : ''
   }`}
   alt="Glasses"
   style={{
-    transform: `translateY(${scrollY < GLASSES_STOP_SCROLL ? scrollY * 0.2 : scrollY * 0.1}px)`,
-    opacity: scrollY >= IMG_FADE_START 
-      ? Math.max(1 - (scrollY - IMG_FADE_START) / (IMG_FADE_END + 200 - IMG_FADE_START), 0) 
-      : 1, // Extended fade range
-    transition: 'transform 0.3s ease, opacity 0.6s ease', // Slower opacity transition
+    transform: `translateY(${Math.min(scrollY * 1, 20)}px)`, // Limited to 20px translation
+    // Updated fade logic
+    opacity:
+      scrollY >= FADE_START && scrollY <= FADE_END
+        ? 1 - (scrollY - FADE_START) / (FADE_END - FADE_START)
+        : scrollY > FADE_END
+        ? 0
+        : 1,
+    transition: 'transform 0.3s ease, opacity 0.5s ease', // Made the opacity transition slower
   }}
 />
 
 
+
+
               <img
                 src={Ellipse}
-                className="absolute bottom-0 left-[60px] z-20 w-[60%] lg:left-[100px] lg:bottom-[0px] lg:w-[65%]"
+                className="absolute bottom-0 left-[60px] z-0 w-[60%] lg:left-[100px] lg:bottom-[0px] lg:w-[65%]"
                 style={{
                   opacity: scrollY < FADE_START ? 1 : 0,
                   transform: startEllipseAnimation
@@ -137,11 +145,11 @@ const Home = () => {
 
               <img
                 src={Rectangle}
-                className="absolute bottom-0 left-[-20px] lg:left-[-110px] lg:top-[80px] w-[50%] lg:w-[70%] z-10"
+                className="absolute bottom-0 left-[-20px] lg:left-[-110px] lg:top-[80px] w-[50%] lg:w-[70%] z-0"
                 style={{
                   opacity: scrollY < FADE_START ? 1 : 0,
                   transform: startRectangleAnimation
-                    ? `rotate(${scrollY * 0.3}deg) scale(${Math.max(1 - scrollY * 0.002, 0)})`
+                    ? `rotate(${scrollY * 0.4}deg) scale(${Math.max(1 - scrollY * 0.002, 0)})`
                     : 'rotate(0deg) scale(1)',
                   transformOrigin: '100% 100%',
                   transition: 'transform 0.3s ease, opacity 0.3s ease',
@@ -155,7 +163,7 @@ const Home = () => {
                 style={{
                   opacity: scrollY < FADE_START ? 1 : 0,
                   transform: startTriangleAnimation
-                    ? `rotate(-${scrollY * 0.3}deg) scale(${Math.max(1 - scrollY * 0.002, 0)})`
+                    ? `rotate(-${scrollY * 0.4}deg) scale(${Math.max(1 - scrollY * 0.002, 0)})`
                     : 'rotate(0deg) scale(1)',
                   transformOrigin: '0% 100%',
                   transition: 'transform 0.3s ease, opacity 0.3s ease',
@@ -169,6 +177,7 @@ const Home = () => {
 
       <About />
       <Project />
+      <Footer />
     </div>
   );
 };
