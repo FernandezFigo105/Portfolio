@@ -36,7 +36,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-[#F7F7F7] flex-col space-y-8 lg:space-y-10 lg:space-x-10 lg:pb-10">
+    <div className="flex items-center justify-center w-full min-h-screen bg-[#F7F7F7] flex-col space-y-8 lg:space-y-10 lg:space-x-10 lg:pb-10 pt-[70px]">
       <h1 className="text-2xl md:text-3xl font-semibold font-Figtree">My Projects</h1>
 
       {projectData.map((project, index) => (
