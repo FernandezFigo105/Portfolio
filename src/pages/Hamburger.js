@@ -24,7 +24,7 @@ const HamburgerIcon = () => {
     <div className="z-50 flex justify-end items-center">
       <button
         onClick={handleToggle}
-        className="fixed right-2 top-4 md:right-4 md:top-8 lg:right-0 lg:top-16 lg:mr-[50px] z-50 w-10 h-10 md:w-12 md:h-12 lg:w-[60px] lg:h-[60px] py-2.5 md:py-3  lg:py-[18px] bg-black rounded-md md:rounded-lg lg:rounded-[10px] flex flex-col justify-between items-center focus:outline-none shadow-2xl"
+        className="fixed right-2 top-4 md:right-4 md:top-8 lg:right-0 lg:top-16 lg:mr-[50px] z-50 w-10 h-10 mr-[8px] md:w-12 md:h-12 lg:w-[60px] lg:h-[60px] py-2.5 md:py-3  lg:py-[18px] bg-black rounded-md md:rounded-lg lg:rounded-[10px] flex flex-col justify-between items-center focus:outline-none shadow-2xl"
       >
         {/* Hamburger icon */}
         <div
