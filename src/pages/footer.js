@@ -1,46 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Shapes from '../assets/footershapes.png';
 
 const Footer = () => {
-  const handleCreditsClick = () => {
-    const credits = document.getElementById("credits");
-    if (credits) {
-      // Append credits below the footer
-      credits.style.display = "block";  // Show credits
-      setTimeout(() => {
-        credits.style.display = "none";  // Hide credits after 5 seconds
-      }, 5000); // Hide after 5 seconds
-    }
+  const [isCreditsVisible, setIsCreditsVisible] = useState(false);
+
+  const toggleCredits = () => {
+    setIsCreditsVisible(true); // Show the credits
+
+    // Hide the credits after 3 seconds
+    setTimeout(() => {
+      setIsCreditsVisible(false); // Hide credits after 3 seconds
+    }, 3000);
   };
 
-  // Handle DOM manipulation after the component mounts
-  useEffect(() => {
-    const credits = document.getElementById("credits");
-    if (credits) {
-      credits.style.display = "none"; // Ensure credits are hidden initially
-    }
-  }, []);
-
   return (
-    <div>
-      <div className="relative  bg-[#231E1F]  text-white py-[50px] pb-[130px] lg:pb-5 overflow-hidden rounded-t-lg">
+    <div className="relative">
+      <div className="relative bg-[#231E1F] text-white py-[50px] pb-[130px] lg:pb-5 overflow-hidden rounded-t-lg">
         <div className="mb-5 grid grid-cols-3 lg:grid-cols-5 lg:gap-[200px] relative z-10 lg:flex justify-center">
           {/* More Column */}
           <div className="flex flex-col m-0 p-0">
             <h3 className="font-bold text-xl mb-4">More</h3>
-            <ul className="space-y-2 leading-snug text-sm lg:text-lg ">
+            <ul className="space-y-2 leading-snug text-sm lg:text-lg">
               <li>
-                <a href="#home" className="hover:text-gray-300">Home</a>
+                <a href="/" className="hover:text-gray-300">Home</a>
               </li>
               <li>
-                <a href="#work" className="hover:text-gray-300">Work</a>
+                <a href="/projects" className="hover:text-gray-300">Work</a>
               </li>
               <li>
-                <a href="#about-me" className="hover:text-gray-300">About Me</a>
+                <a href="/About" className="hover:text-gray-300">About Me</a>
               </li>
               <li>
-                <button
-                  onClick={handleCreditsClick}
+                <button 
+                  onClick={toggleCredits} 
                   className="hover:text-gray-300"
                 >
                   Credits
@@ -53,18 +45,18 @@ const Footer = () => {
           <div className="flex flex-col m-0 p-0">
             <h3 className="font-bold text-xl mb-4">Social</h3>
             <ul className="space-y-2 m-0 p-0">
-              <li className='leading-snug text-sm lg:text-lg'>
-                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+              <li className="leading-snug text-sm lg:text-lg">
+                <a href="https://www.linkedin.com/in/christopher-ryann/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
                   LinkedIn
                 </a>
               </li>
-              <li className='leading-snug text-sm lg:text-lg'>
-                <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+              <li className="leading-snug text-sm lg:text-lg">
+                <a href="https://www.behance.net/christopherdevar" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
                   Behance
                 </a>
               </li>
-              <li className='leading-snug text-sm lg:text-lg'>
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+              <li className="leading-snug text-sm lg:text-lg">
+                <a href="https://www.instagram.com/chistopisto/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
                   Instagram
                 </a>
               </li>
@@ -76,12 +68,12 @@ const Footer = () => {
             <h3 className="font-bold text-xl mb-4">Contact</h3>
             <ul className="space-y-2 m-0 p-0">
               <li>
-                <a href="mailto:example@example.com" className="hover:text-gray-300">
+                <a href="mailto:christopherdevar22@gmail.com" className="hover:text-gray-300 text-sm lg:text-lg">
                   Email
                 </a>
               </li>
               <li>
-                <a href="https://drive.google.com/file/d/1-JcgllZm4F_8H83t2woEIefnwZVFfGB7/view" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+                <a href="https://drive.google.com/file/d/1-JcgllZm4F_8H83t2woEIefnwZVFfGB7/view" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 text-sm lg:text-lg">
                   Resume
                 </a>
               </li>
@@ -97,10 +89,28 @@ const Footer = () => {
         />
       </div>
 
-      {/* Credits Message - Initially hidden, will appear below the footer */}
-      <div id="credits" className="w-full bg-gradient-to-r from-[#752728] via-[#2D578B] to-[#8B8F40] py-8 text-center z-10 text-white" style={{ display: 'none' }}>
-        <p>This website was developed with the help of my dearest friend <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className='underline'>Figo Fernandez</a> Huge Thanks!! 🤝</p>
-      </div>
+      {/* Credits Popup */}
+      {isCreditsVisible && (
+        <div className="fixed bottom-0 left-0 right-0 z-50">
+          <div className="relative">
+            <div className="w-full bg-gradient-to-r from-[#752728] via-[#2D578B] to-[#8B8F40] py-8 text-center text-white shadow-lg">
+              <p>
+                This website was developed with the help of my dearest friend{' '}
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="underline">
+                  Figo Fernandez
+                </a>{' '}
+                Huge Thanks!! 🤝
+              </p>
+              <button 
+                onClick={toggleCredits}
+                className="absolute top-2 right-2 text-white hover:text-gray-300"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

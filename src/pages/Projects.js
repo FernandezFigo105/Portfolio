@@ -67,12 +67,12 @@ const Projects = () => {
     }`}
     onClick={() => handleCardClick(project.link)}
   >
-    <div className="w-full lg:w-1/2 h-[150px] sm:h-[200px] lg:h-auto">
+    <div className="w-full lg:w-1/2 h-[120px] sm:h-[200px] lg:h-auto">
       <img src={project.image} className="h-full w-full object-cover" alt="Project" />
     </div>
 
-    <div className="w-full lg:w-1/2 bg-[#231E1F] p-4 sm:p-6 lg:pl-10 lg:pr-6 lg:pt-[10px] flex items-center justify-center">
-      <h2 className="text-sm sm:text-md lg:text-lg text-white text-left lg:px-[40px] font-Lexend">
+    <div className="w-full lg:w-1/2 bg-[#231E1F] lg:h-[300px] h-[150px] p-4 sm:p-6 lg:pl-10 lg:pr-6 lg:pt-[10px] flex items-center justify-center">
+      <h2 className="text-[12px] font-thin sm:text-md lg:text-lg text-white text-left lg:px-[40px] font-Lexend">
         {project.description}
       </h2>
     </div>

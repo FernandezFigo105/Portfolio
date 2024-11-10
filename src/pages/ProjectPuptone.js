@@ -24,7 +24,7 @@ const ProjectPupTone = () => {
 
       {/* Hamburger Menu */}
       <Hamburger />
-      <Link to="/projects/iztron">
+     <Link to="/projects/iztron">
   <button
     className="hidden lg:block lg:bg-black lg:text-white lg:text-[20px] lg:border-2 border-white py-2 px-4 rounded-md hover:bg-slate-500 transition fixed lg:right-[50px] lg:top-[350px] transform -translate-y-1/2"
   >
