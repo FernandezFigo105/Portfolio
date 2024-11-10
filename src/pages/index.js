@@ -18,8 +18,8 @@ const Home = () => {
   const glassesRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
 
-  const TEXTFADE_START = 10
-  const TEXTFADE_END = 300
+  const TEXTFADE_START = 10;
+  const TEXTFADE_END = 300;
   const FADE_START = 250;
   const FADE_END = 500;
   const IMG_FADE_START = 300;
@@ -68,10 +68,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='bg-[#231E1F] flex flex-col items-center min-h-screen'>
+    <div className="bg-[#231E1F] flex flex-col items-center min-h-screen">
       <Hamburger />
       <div
-        id="home" className='flex flex-col justify-between items-center min-h-screen w-full'
+        id="home"
+        className="flex flex-col justify-between items-center min-h-screen w-full"
         style={{
           transform: `translateY(${scrollY < FADE_START ? 0 : scrollY * 0.3}px)`,
           transition: 'transform 0.3s ease',
@@ -79,16 +80,19 @@ const Home = () => {
       >
         {/* Sticky text container */}
         <div
-          className='text-center font-Figtree mt-[220px] lg:mt-[150px] sticky top-0'
+          className="text-center font-Figtree mt-[220px] lg:mt-[150px] sticky top-0"
           style={{
-            opacity: scrollY >= FADE_START ? Math.max(1 - (scrollY - TEXTFADE_START) / (TEXTFADE_END - TEXTFADE_START), 0) : 1,
-            transition: 'opacity 0.2s ease', // Updated for faster fade
+            opacity:
+              scrollY >= FADE_START
+                ? Math.max(1 - (scrollY - TEXTFADE_START) / (TEXTFADE_END - TEXTFADE_START), 0)
+                : 1,
+            transition: 'opacity 0.2s ease',
           }}
         >
-          <h1 className='text-[#EAEAEA] font-semibold font-figtree text-[28px] lg:text-[48.17px]'>
-            Sup! <span className='font-normal'>I'm Christopher</span>
+          <h1 className="text-[#EAEAEA] font-semibold font-figtree text-[28px] lg:text-[48.17px]">
+            Sup! <span className="font-normal">I'm Christopher</span>
           </h1>
-          <h2 className='text-[#A7A7A7] font-bonheur text-[22px] lg:text-[45px] opacity-[60%]'>
+          <h2 className="text-[#A7A7A7] font-bonheur text-[22px] lg:text-[45px] opacity-[60%]">
             Scroll to learn a bit about me
           </h2>
         </div>
@@ -100,7 +104,10 @@ const Home = () => {
             alt="Chisto"
             style={{
               transform: `translateY(${scrollY < IMG_FADE_START ? 0 : scrollY * 0.1}px)`,
-              opacity: scrollY >= IMG_FADE_START ? Math.max(1 - (scrollY - IMG_FADE_START) / (IMG_FADE_END - IMG_FADE_START), 0) : 1,
+              opacity:
+                scrollY >= IMG_FADE_START
+                  ? Math.max(1 - (scrollY - IMG_FADE_START) / (IMG_FADE_END - IMG_FADE_START), 0)
+                  : 1,
               transition: 'transform 0.3s ease, opacity 0.3s ease',
             }}
           />
@@ -108,27 +115,22 @@ const Home = () => {
           {chistoOpacity > 0 && (
             <>
               <img
-  src={Glasses}
-  ref={glassesRef}
-  className={`absolute top-[120px] lg:top-[-20px] left-[70px] lg:bottom-[85px] w-[40%] lg:left-[135px] lg:w-[40%] z-20 transition-transform duration-300 ${
-    translateOnce ? 'translate-y-5' : ''
-  }`}
-  alt="Glasses"
-  style={{
-    transform: `translateY(${Math.min(scrollY * 1, 20)}px)`, // Limited to 20px translation
-    // Updated fade logic
-    opacity:
-      scrollY >= FADE_START && scrollY <= FADE_END
-        ? 1 - (scrollY - FADE_START) / (FADE_END - FADE_START)
-        : scrollY > FADE_END
-        ? 0
-        : 1,
-    transition: 'transform 0.3s ease, opacity 0.5s ease', // Made the opacity transition slower
-  }}
-/>
-
-
-
+                src={Glasses}
+                ref={glassesRef}
+                className={`absolute top-[120px] lg:top-[-20px] left-[70px] lg:bottom-[85px] w-[40%] lg:left-[135px] lg:w-[40%] z-20 transition-transform duration-300 ${translateOnce ? 'translate-y-5' : ''
+                  }`}
+                alt="Glasses"
+                style={{
+                  transform: `translateY(${Math.min(scrollY * 1, 20)}px)`,
+                  opacity:
+                    scrollY >= FADE_START && scrollY <= FADE_END
+                      ? 1 - (scrollY - FADE_START) / (FADE_END - FADE_START)
+                      : scrollY > FADE_END
+                        ? 0
+                        : 1,
+                  transition: 'transform 0.3s ease, opacity 0.5s ease',
+                }}
+              />
 
               <img
                 src={Ellipse}
@@ -177,7 +179,9 @@ const Home = () => {
 
       <About />
       <Project />
-      <Footer />
+      <div className="w-full">
+        <Footer />
+      </div>
     </div>
   );
 };
