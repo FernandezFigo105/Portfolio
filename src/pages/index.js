@@ -23,7 +23,18 @@ const Home = () => {
   const FADE_START = 250;
   const FADE_END = 500;
   const IMG_FADE_START = 300;
-  const IMG_FADE_END = 500; // Updated for faster fade
+  const IMG_FADE_END = 500;
+
+  useEffect(() => {
+    // Reset state when component is unmounted
+    return () => {
+      setTranslateOnce(false);
+      setStartEllipseAnimation(false);
+      setStartRectangleAnimation(false);
+      setStartTriangleAnimation(false);
+      setChistoOpacity(1);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -48,6 +59,7 @@ const Home = () => {
       const scrollPos = window.scrollY;
       setScrollY(scrollPos);
 
+      // Fade logic for opacity
       if (scrollPos >= FADE_START && scrollPos <= FADE_END) {
         setChistoOpacity(1 - (scrollPos - FADE_START) / (FADE_END - FADE_START));
       } else if (scrollPos > FADE_END) {
@@ -70,117 +82,123 @@ const Home = () => {
   return (
     <div className="bg-[#231E1F] flex flex-col items-center min-h-screen">
       <Hamburger />
-      <div
-        id="home"
-        className="flex flex-col justify-between items-center min-h-screen w-full"
-        style={{
-          transform: `translateY(${scrollY < FADE_START ? 0 : scrollY * 0.3}px)`,
-          transition: 'transform 0.3s ease',
-        }}
-      >
-        {/* Sticky text container */}
+      <div className='relative w-full overflow-hidden'>
         <div
-          className="text-center font-Figtree mt-[220px] lg:mt-[150px] sticky top-0"
+          id="home"
+          className="flex flex-col justify-between items-center min-h-screen w-full"
           style={{
-            opacity:
-              scrollY >= FADE_START
-                ? Math.max(1 - (scrollY - TEXTFADE_START) / (TEXTFADE_END - TEXTFADE_START), 0)
-                : 1,
-            transition: 'opacity 0.2s ease',
+            transform: `translateY(${scrollY < FADE_START ? 0 : scrollY * 0.3}px)`,
+            transition: 'transform 0.3s ease',
           }}
         >
-          <h1 className="text-[#EAEAEA] font-semibold font-figtree text-[28px] lg:text-[48.17px]">
-            Sup! <span className="font-normal">I'm Christopher</span>
-          </h1>
-          <h2 className="text-[#A7A7A7] font-bonheur text-[22px] lg:text-[45px] opacity-[60%]">
-            Scroll to learn a bit about me
-          </h2>
-        </div>
-
-        <div className="relative w-[300px] h-[300px] lg:w-[500px] lg:h-[300px] flex-shrink-0">
-          <img
-            src={Chisto}
-            className="absolute bottom-0 left-0 z-10 w-[90%] lg:w-[100%]"
-            alt="Chisto"
+          {/* Sticky text container */}
+          <div
+            className="text-center font-Figtree mt-[220px] lg:mt-[150px] sticky top-0"
             style={{
-              transform: `translateY(${scrollY < IMG_FADE_START ? 0 : scrollY * 0.1}px)`,
               opacity:
-                scrollY >= IMG_FADE_START
-                  ? Math.max(1 - (scrollY - IMG_FADE_START) / (IMG_FADE_END - IMG_FADE_START), 0)
+                scrollY >= FADE_START
+                  ? Math.max(1 - (scrollY - TEXTFADE_START) / (TEXTFADE_END - TEXTFADE_START), 0)
                   : 1,
-              transition: 'transform 0.3s ease, opacity 0.3s ease',
+              transition: 'opacity 0.2s ease',
             }}
-          />
+          >
+            <h1 className="text-[#EAEAEA] font-semibold font-figtree text-[28px] lg:text-[48.17px]">
+              Sup! <span className="font-normal">I'm Christopher</span>
+            </h1>
+            <h2 className="text-[#A7A7A7] font-bonheur text-[22px] lg:text-[45px] opacity-[60%]">
+              Scroll to learn a bit about me
+            </h2>
+          </div>
 
-          {chistoOpacity > 0 && (
-            <>
-              <img
-                src={Glasses}
-                ref={glassesRef}
-                className={`absolute top-[120px] lg:top-[-20px] left-[70px] lg:bottom-[85px] w-[40%] lg:left-[135px] lg:w-[40%] z-20 transition-transform duration-300 ${translateOnce ? 'translate-y-5' : ''
-                  }`}
-                alt="Glasses"
-                style={{
-                  transform: `translateY(${Math.min(scrollY * 1, 20)}px)`,
-                  opacity:
-                    scrollY >= FADE_START && scrollY <= FADE_END
-                      ? 1 - (scrollY - FADE_START) / (FADE_END - FADE_START)
-                      : scrollY > FADE_END
-                        ? 0
-                        : 1,
-                  transition: 'transform 0.3s ease, opacity 0.5s ease',
-                }}
-              />
+          <div className="relative w-[300px] h-[300px] lg:w-[500px] lg:h-[300px] flex-shrink-0">
+            <img
+              src={Chisto}
+              className="absolute bottom-0 left-0 z-10 w-[90%] lg:w-[100%]"
+              alt="Chisto"
+              style={{
+                transform: `translateY(${scrollY < IMG_FADE_START ? 0 : scrollY * 0.1}px)`,
+                opacity:
+                  scrollY >= IMG_FADE_START
+                    ? Math.max(1 - (scrollY - IMG_FADE_START) / (IMG_FADE_END - IMG_FADE_START), 0)
+                    : 1,
+                transition: 'transform 0.3s ease, opacity 0.3s ease',
+              }}
+            />
 
-              <img
-                src={Ellipse}
-                className="absolute bottom-0 left-[60px] z-0 w-[60%] lg:left-[100px] lg:bottom-[0px] lg:w-[65%]"
-                style={{
-                  opacity: scrollY < FADE_START ? 1 : 0,
-                  transform: startEllipseAnimation
-                    ? `translateY(${scrollY * 0.4}px) scale(${Math.max(1 - scrollY * 0.002, 0)}) rotate(${scrollY * 0.1}deg)`
-                    : 'translateY(0px) scale(1) rotate(0deg)',
-                  transition: 'transform 0.3s ease, opacity 0.3s ease',
-                }}
-                alt="Ellipse"
-              />
+            {chistoOpacity > 0 && (
+              <>
+                <img
+                  src={Glasses}
+                  ref={glassesRef}
+                  className={`absolute top-[120px] lg:top-[-20px] left-[70px] lg:bottom-[85px] w-[40%] lg:left-[135px] lg:w-[40%] z-20 transition-transform duration-300 ${translateOnce ? 'translate-y-5' : ''
+                    }`}
+                  alt="Glasses"
+                  style={{
+                    transform: `translateY(${Math.min(scrollY * 1, 20)}px)`,
+                    opacity:
+                      scrollY >= FADE_START && scrollY <= FADE_END
+                        ? 1 - (scrollY - FADE_START) / (FADE_END - FADE_START)
+                        : scrollY > FADE_END
+                          ? 0
+                          : 1,
+                    transition: 'transform 0.3s ease, opacity 0.5s ease',
+                  }}
+                />
 
-              <img
-                src={Rectangle}
-                className="absolute bottom-0 left-[-20px] lg:left-[-110px] lg:top-[80px] w-[50%] lg:w-[70%] z-0"
-                style={{
-                  opacity: scrollY < FADE_START ? 1 : 0,
-                  transform: startRectangleAnimation
-                    ? `rotate(${scrollY * 0.4}deg) scale(${Math.max(1 - scrollY * 0.002, 0)})`
-                    : 'rotate(0deg) scale(1)',
-                  transformOrigin: '100% 100%',
-                  transition: 'transform 0.3s ease, opacity 0.3s ease',
-                }}
-                alt="Rectangle"
-              />
+                <img
+                  src={Ellipse}
+                  className="absolute bottom-0 left-[60px] z-0 w-[60%] lg:left-[100px] lg:bottom-[0px] lg:w-[65%]"
+                  style={{
+                    opacity: scrollY < FADE_START ? 1 : 0,
+                    transform: startEllipseAnimation
+                      ? `translateY(${scrollY * 0.4}px) scale(${Math.max(1 - scrollY * 0.002, 0)}) rotate(${scrollY * 0.1}deg)`
+                      : 'translateY(0px) scale(1) rotate(0deg)',
+                    transition: 'transform 0.3s ease, opacity 0.3s ease',
+                  }}
+                  alt="Ellipse"
+                />
 
-              <img
-                src={Triangle}
-                className="absolute bottom-0 left-[190px] lg:left-[370px] lg:top-[80px] w-[40%] lg:w-[60%] z-0"
-                style={{
-                  opacity: scrollY < FADE_START ? 1 : 0,
-                  transform: startTriangleAnimation
-                    ? `rotate(-${scrollY * 0.4}deg) scale(${Math.max(1 - scrollY * 0.002, 0)})`
-                    : 'rotate(0deg) scale(1)',
-                  transformOrigin: '0% 100%',
-                  transition: 'transform 0.3s ease, opacity 0.3s ease',
-                }}
-                alt="Triangle"
-              />
-            </>
-          )}
+                <img
+                  src={Rectangle}
+                  className="absolute bottom-0 left-[-20px] lg:left-[-110px] lg:top-[80px] w-[50%] lg:w-[70%] z-0"
+                  style={{
+                    opacity: scrollY < FADE_START ? 1 : 0,
+                    transform: startRectangleAnimation
+                      ? `rotate(${scrollY * 0.4}deg) scale(${Math.max(1 - scrollY * 0.002, 0)})`
+                      : 'rotate(0deg) scale(1)',
+                    transformOrigin: '100% 100%',
+                    transition: 'transform 0.3s ease, opacity 0.3s ease',
+                  }}
+                  alt="Rectangle"
+                />
+
+                <img
+                  src={Triangle}
+                  className="absolute bottom-0 left-[190px] lg:left-[370px] lg:top-[80px] w-[40%] lg:w-[60%] z-0"
+                  style={{
+                    opacity: scrollY < FADE_START ? 1 : 0,
+                    transform: startTriangleAnimation
+                      ? `rotate(-${scrollY * 0.4}deg) scale(${Math.max(1 - scrollY * 0.002, 0)})`
+                      : 'rotate(0deg) scale(1)',
+                    transformOrigin: '0% 100%',
+                    transition: 'transform 0.3s ease, opacity 0.3s ease',
+                  }}
+                  alt="Triangle"
+                />
+              </>
+            )}
+          </div>
         </div>
       </div>
-
       <About />
       <Project />
-      <div className="w-full">
-        <Footer />
+      <div className="w-full bg-[#F7F7F7] p-4">
+        <h2 className='font-Lexend'>
+          Check out my other projects on <a href="https://www.behance.net/christopherdevar" target="_blank" rel="noopener noreferrer" className="font-bold"> Bēhance</a>
+        </h2>
+      </div>
+      <div className='w-full'>
+      <Footer />
       </div>
     </div>
   );

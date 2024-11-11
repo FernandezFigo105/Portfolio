@@ -84,7 +84,7 @@ const Footer = () => {
         {/* Shapes */}
         <img
           src={Shapes}
-          className="absolute top-[40%] left-[40%] z-0 w-[50%] lg:left-[75%] lg:top-[30%] lg:w-[20%] pointer-events-none"
+          className="absolute top-[40%] left-[40%] z-0 w-[50%] lg:left-[75%] lg:top-[10%] lg:w-[20%] pointer-events-none"
           alt="Shapes"
         />
       </div>
@@ -96,7 +96,7 @@ const Footer = () => {
             <div className="w-full bg-gradient-to-r from-[#752728] via-[#2D578B] to-[#8B8F40] py-8 text-center text-white shadow-lg">
               <p>
                 This website was developed with the help of my dearest friend{' '}
-                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="underline">
+                <a href="https://github.com/FernandezFigo105" target="_blank" rel="noopener noreferrer" className="underline">
                   Figo Fernandez
                 </a>{' '}
                 Huge Thanks!! 🤝
