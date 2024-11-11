@@ -5,7 +5,6 @@ import YourHour from '../assets/2.png';
 import Fridge from '../assets/3.png';
 import Puptone from '../assets/4.png';
 import Iztron from '../assets/5.png'
-import Footer  from './footer.js';
 
 const Projects = () => {
   const navigate = useNavigate();
