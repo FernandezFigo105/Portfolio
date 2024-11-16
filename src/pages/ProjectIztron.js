@@ -35,7 +35,7 @@ const ProjectIztron = () => {
       <img src={Iztron1} className="" alt="Iztron1" />
       <img src={Iztron2} className="" alt="Iztron2" />
       <img src={Iztron3} className="" alt="Iztron3" />
-      <img src={Iztron3} className="" alt="Iztron4" />
+      <img src={Iztron4} className="" alt="Iztron4" />
 
       {/* Footer */}
       </div>
