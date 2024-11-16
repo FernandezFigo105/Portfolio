@@ -13,7 +13,7 @@ const ProjectYourHour = () => {
     <div className="bg-black">
       <div className="lg:w-[80%] w-full mx-auto flex flex-col items-center bg-black">
       {/* Navigation Buttons */}
-      <Link to="https://www.behance.net/gallery/196786321/Smart-Fridge-Touchscreen-App-design">
+      <Link to="https://www.behance.net/gallery/196786321/Smart-Fridge-Touchscreen-App-design" target="_blank" rel="noopener noreferrer">
   <button
     className="hidden lg:block lg:bg-black lg:text-white lg:text-[20px] lg:border-2 border-white py-2 px-4 rounded-md hover:bg-slate-500 transition fixed lg:right-[50px] lg:top-[350px] transform -translate-y-1/2"
   >

@@ -25,15 +25,15 @@ const Footer = () => {
                 <a href="/" className="hover:text-gray-300">Home</a>
               </li>
               <li>
-                <a href="/projects" className="hover:text-gray-300">Work</a>
+                <a href="/" className="hover:text-gray-300">Work</a>
               </li>
               <li>
-                <a href="/About" className="hover:text-gray-300">About Me</a>
+                <a href="/" className="hover:text-gray-300">About Me</a>
               </li>
               <li>
                 <button 
                   onClick={toggleCredits} 
-                  className="hover:text-gray-300"
+                  className=" text-[14px] lg:text-[18px] text-amber-200"
                 >
                   Credits
                 </button>
@@ -93,7 +93,7 @@ const Footer = () => {
       {isCreditsVisible && (
         <div className="fixed bottom-0 left-0 right-0 z-50">
           <div className="relative">
-            <div className="w-full bg-gradient-to-r from-[#752728] via-[#2D578B] to-[#8B8F40] py-8 text-center text-white shadow-lg">
+            <div className="w-full bg-gradient-to-r from-[#752728] via-[#2D578B] to-[#8B8F40] text-[15px] p-8 text-center text-white shadow-lg">
               <p>
                 This website was developed with the help of my dearest friend{' '}
                 <a href="https://github.com/FernandezFigo105" target="_blank" rel="noopener noreferrer" className="underline">
