@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 import Hamburger from './Hamburger.js';
-import YourHour0 from '../assets/YourHour/YourHour0.jpg';
-import YourHour1 from '../assets/YourHour/YourHour1.jpg';
-import YourHour2 from '../assets/YourHour/YourHour2.jpg';
-import YourHour3 from '../assets/YourHour/YourHour3.jpg';
+import YourHour0 from '../assets/YourHour/YourHour1.webp';
+import YourHour1 from '../assets/YourHour/YourHour2.webp';
+import YourHour2 from '../assets/YourHour/YourHour3.webp';
+import YourHour3 from '../assets/YourHour/YourHour4.webp';
 
 import Footer from './footer.js';
 

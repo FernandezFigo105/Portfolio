@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 import Hamburger from './Hamburger.js';
-import Iztron1 from '../assets/Iztron/Iztron1.jpg';
-import Iztron2 from '../assets/Iztron/Iztron2.jpg';
-import Iztron3 from '../assets/Iztron/Iztron3.jpg';
+import Iztron1 from '../assets/Iztron/Iztron1.webp';
+import Iztron2 from '../assets/Iztron/Iztron2.webp';
+import Iztron3 from '../assets/Iztron/Iztron3.webp';
+import Iztron4 from '../assets/Iztron/Iztron4.webp';
 import Footer from './footer.js';
 
 
@@ -34,6 +35,7 @@ const ProjectIztron = () => {
       <img src={Iztron1} className="" alt="Iztron1" />
       <img src={Iztron2} className="" alt="Iztron2" />
       <img src={Iztron3} className="" alt="Iztron3" />
+      <img src={Iztron3} className="" alt="Iztron4" />
 
       {/* Footer */}
       </div>
