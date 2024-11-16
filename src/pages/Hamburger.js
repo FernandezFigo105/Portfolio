@@ -78,7 +78,7 @@ const HamburgerIcon = () => {
 
           {/* Resume Link */}
           <Link
-            to="https://drive.google.com/file/d/1-JcgllZm4F_8H83t2woEIefnwZVFfGB7/view"
+            to="https://drive.google.com/file/d/1hiM3Y_O8fcg7jaKo9Bi9A-Qf6XEySvq8/view?usp=sharing"
             target="_blank"
             className="bg-white hover:bg-black hover:text-white text-black text-lg md:text-xl lg:text-[20px] font-bold py-2 px-4 md:py-3 md:px-5 lg:py-[10px] lg:px-4 w-24 md:w-28 lg:w-[100px] h-10 md:h-12 lg:h-[50px] rounded-full cursor-pointer text-center"
             onClick={handleToggle}
