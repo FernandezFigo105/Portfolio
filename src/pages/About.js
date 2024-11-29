@@ -14,10 +14,10 @@ const About = () => {
           <span className="text-[#FA7772]">Hey there!</span> I'm Christopher Devar.<br />
           A final year UX/UI design student at MITSD Pune
           <br /><br />
-          Design has become my way of balancing my <br />
-          creativity with my logical-analytical-overthinking side. <br />
-          I enjoy working on projects that are result-driven. <br />
-          I am hungry for working in prolific environments <br />
+          Design has become my way of balancing my <br/>
+          witty-creative-unorthodox side with my logical-analytical-overthinking side. 
+          I enjoy working on projects that are result-driven. 
+          I am hungry for working in prolific environments 
           where I can contribute and expand my skillset.
           <div className="mt-4">
             <span>Let's meet!</span>
